@@ -11,7 +11,7 @@ nav{
     justify-content: space-between;
     border-bottom: 2px solid rgb(219, 160, 83);
 }
-nav .nav-menu{
+ .nav-menu{
     list-style: none;
     display: flex;
     justify-content: center;
@@ -19,11 +19,11 @@ nav .nav-menu{
     margin: 0;
     padding: 0;
 }
-nav .nav-menu li{
+ .nav-menu li{
     margin: 5px;
     transition: all 2s;
 }
-nav .nav-menu .nav-item{
+ .nav-menu .nav-item{
     text-decoration: none;
     font-size: 1.2rem;
     color: black;
@@ -31,6 +31,10 @@ nav .nav-menu .nav-item{
     position: relative;
     
 }
+ .nav-menu .nav-item:active,.nav-menu .nav-item.active{
+    color: rgb(219, 160, 83);
+}
+
 .nav-item::before{
     content:'';
     width: 0;
@@ -40,21 +44,14 @@ nav .nav-menu .nav-item{
     bottom: 0;
     left: 10%;
 }
-nav .nav-menu .nav-item:hover::before{
+.nav-menu .nav-item:hover::before{
     animation-name: move1;
     animation-duration: 0.3s;
     animation-timing-function: linear;
     animation-fill-mode: forwards;
 }
-@keyframes move1{
-    form{
-        width: 0;
-    }
-    to{
-        width: 80%;
-    }
-}
-nav .nav-menu .nav-item::after{
+
+.nav-menu .nav-item::after{
     content:'';
     width: 0;
     height: 2px;
@@ -64,8 +61,23 @@ nav .nav-menu .nav-item::after{
     right: 5%;
     bottom: -4px;
 }
-nav .nav-menu .nav-item:hover::after{
+.nav-menu .nav-item:hover::after{
     animation:move2 0.3s linear forwards;
+}
+nav .fa-bars{
+    font-size: 1.5rem;
+    position: absolute;
+    top: 26px;
+    right: 20px;
+    display: none;
+}
+@keyframes move1{
+    form{
+        width: 0;
+    }
+    to{
+        width: 80%;
+    }
 }
 @keyframes move2 {
     from{
@@ -75,3 +87,31 @@ nav .nav-menu .nav-item:hover::after{
         width: 90%;
     }
 }
+
+
+@media (max-width:650px){
+    .nav-menu{
+        width: 100%;
+        text-align: center;
+        display: none;
+        /* background-color: bisque; */
+        position: absolute;
+        top: 13.5%;
+        left: 0;
+    }
+    .nav-menu.show{
+        display: block;
+    }
+    .nav-menu li{
+        border-bottom:1px solid bisque;
+        padding-top: 10px;
+        padding-bottom: 15px;
+    }
+    .nav-menu .nav-item{
+        padding: 10px;
+    }
+    nav .fa-bars{
+        display: block;
+    }
+}
+
